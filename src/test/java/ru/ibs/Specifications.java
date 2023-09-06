@@ -18,7 +18,6 @@ public class Specifications {
                 .setBaseUri(url)//---> Cтартовая URL
                 .setContentType(JSON)//---> Установка Content Type
                 .setAccept(JSON)//---> Установка Accept
-
                 .build();
     }
 

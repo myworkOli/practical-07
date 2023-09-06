@@ -12,12 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ru.ibs.BDConnection.getH2DataSource;
 
 public class Jdbc {
-
-    public static JdbcTemplate jdbcTemplate;
-
 
     @Step("Получение списка записей соответствующих добавленному товару")
     public static List<FoodSql> getTestFoodString(Food food) throws SQLException {
@@ -28,7 +24,7 @@ public class Jdbc {
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, food.getName());
             ps.setString(2, food.getType());
-            ps.setInt(3, food.isExotic()?1:0);
+            ps.setInt(3, food.isExotic() ? 1 : 0);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     foodTest.add(new FoodSql(rs.getInt("food_Id"),

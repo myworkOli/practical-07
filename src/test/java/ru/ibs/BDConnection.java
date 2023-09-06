@@ -1,7 +1,6 @@
 package ru.ibs;
 
 import org.h2.jdbcx.JdbcDataSource;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -9,11 +8,10 @@ import java.sql.SQLException;
 
 public class BDConnection {
 
-    private static DataSource dataSource=getH2DataSource();
-
+    private static DataSource dataSource = getH2DataSource();
 
     public static Connection getConnection() {
-        Connection connection =null;
+        Connection connection = null;
         try {
             connection = dataSource.getConnection();
         } catch (SQLException e) {
@@ -23,7 +21,6 @@ public class BDConnection {
         return connection;
     }
 
-
     public static DataSource getH2DataSource() {
         JdbcDataSource dataSource = new JdbcDataSource();
         dataSource.setURL("jdbc:h2:tcp://localhost:9092/mem:testdb");
@@ -31,8 +28,7 @@ public class BDConnection {
         dataSource.setPassword("pass");
         return dataSource;
 
-
-}
+    }
 
 
 }
