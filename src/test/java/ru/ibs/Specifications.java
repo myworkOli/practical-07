@@ -12,11 +12,13 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 
 public class Specifications {
-    public static RequestSpecification requestSpecification(String url) {
+    public static RequestSpecification requestSpecification(String url, String cookie) {
         return new RequestSpecBuilder()
+                .addCookie("JSESSIONID",cookie)
                 .setBaseUri(url)//---> Cтартовая URL
                 .setContentType(JSON)//---> Установка Content Type
                 .setAccept(JSON)//---> Установка Accept
+
                 .build();
     }
 
